@@ -1,0 +1,32 @@
+{
+  "PET_LIST": {
+    "TITLE": "Pets",
+    "SEARCH_PETS": "Search pets...",
+    "ADD_PET": "Add Pet",
+    "NO_PETS_FOUND": "No Pets Found",
+    "NO_PETS_MESSAGE": "It looks like there are no pets to display at the moment."
+  },
+  "PET_FORM": {
+    "TITLE": "Add a New Pet",
+    "SUBTITLE": "Fill out the form to create a new pet profile.",
+    "NAME": "Name",
+    "BREED": "Breed",
+    "AGE": "Age",
+    "SPECIES": "Species",
+    "SELECT_SPECIES": "Select species",
+    "DOG": "Dog",
+    "CAT": "Cat",
+    "BIRD": "Bird",
+    "PET_IMAGE": "Pet Image",
+    "CLICK_TO_UPLOAD": "Click to upload",
+    "OR_DRAG_AND_DROP": "or drag and drop",
+    "IMAGE_FORMAT_AND_SIZE": "SVG, PNG, JPG or GIF (MAX. 800x400px)",
+    "SAVE_PET": "Save Pet"
+  },
+  "CHATBOT": {
+    "OPEN_MODAL": "Open Modal",
+    "TITLE": "Chatbot",
+    "TYPE_MESSAGE": "Type your message...",
+    "SEND": "Send"
+  }
+}

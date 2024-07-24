@@ -1,0 +1,19 @@
+<a [routerLink]="['/pet-details', pet.id]" class="block rounded-lg border bg-card text-card-foreground shadow-sm w-full" data-v0-t="card">
+  <img
+    *ngIf="pet.images" [src]="petService.getImageUrl(pet.images[0])" [alt]="pet.images[0]"
+    class="rounded-t-lg object-cover w-full aspect-[4/3]"
+    width="400"
+    height="300"
+  />
+  <div class="p-6 space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-xl font-bold">{{pet.name}}</h3>
+      <div class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground">
+        {{pet.breed}}
+      </div>
+    </div>
+    <div class="flex items-center justify-between text-gray-500 dark:text-gray-400">
+      <span>Age: {{pet.age}} years</span>
+    </div>
+  </div>
+</a>

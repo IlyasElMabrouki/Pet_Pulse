@@ -1,0 +1,106 @@
+<div class="max-w-3xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+  <div class="flex flex-col items-center space-y-8">
+    <div class="w-full">
+      <h1 class="text-3xl font-bold text-center">Pet Details</h1>
+    </div>
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-950 dark:border-gray-800">
+      <form [formGroup]="petFormGroup" (ngSubmit)="updatePet()" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+        <div class="space-y-4">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="col-span-3">
+              <img
+                [src]="getImageUrl(pet.images[0])"
+                alt="Pet Image"
+                width="400"
+                height="400"
+                class="rounded-lg object-cover w-full"
+                style="aspect-ratio: 400 / 400; object-fit: cover;"
+              />
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <div
+                *ngFor="let image of pet.images.slice(1); let i = index"
+                class="border hover:border-gray-900 rounded-lg overflow-hidden transition-colors dark:hover:border-gray-50"
+              >
+                <img
+                  [src]="getImageUrl(image)"
+                  [alt]="'Preview thumbnail ' + (i + 1)"
+                  width="100"
+                  height="100"
+                  class="aspect-square object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="name"
+            >
+              Name
+            </label>
+            <input
+              formControlName="name"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              id="name"
+              placeholder="Enter pet name"
+              [value]="pet.name"
+            />
+          </div>
+          <div>
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="breed"
+            >
+              Breed
+            </label>
+            <input
+              formControlName="breed"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              id="breed"
+              placeholder="Enter pet breed"
+              [value]="pet.breed"
+            />
+          </div>
+          <div>
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="age"
+            >
+              Age
+            </label>
+            <div class="flex items-center space-x-2">
+              <input
+                formControlName="age"
+                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="age"
+                min="0"
+                placeholder="Enter age"
+                type="number"
+                [value]="pet.age"
+              />
+            </div>
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+              type="submit"
+              [disabled]="!petFormGroup.valid"
+            >
+              Update
+            </button>
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-10 px-4 py-2"
+              type="button"
+              (click)="deletePet()"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

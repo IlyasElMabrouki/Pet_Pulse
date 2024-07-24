@@ -1,0 +1,54 @@
+<div class="upload-container">
+  <mat-card>
+    <mat-card-title>Upload Image</mat-card-title>
+    <mat-card-content>
+      <div class="file-input-container">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Choose Image</button>
+      </div>
+      <div *ngIf="selectedFile" class="image-preview-container">
+        <img [src]="imagePreview" alt="Image Preview" class="image-preview">
+        <button mat-raised-button color="accent" (click)="onUpload()">Upload</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-progress-bar   *ngIf="isLoading"  mode="determinate" style="width: 30%" [value]="uploadProgress" ></mat-progress-bar>
+  <div *ngIf="uploadSuccess" class="success-message">
+    <p>Upload successful! Waiting for response loading...</p>
+  </div>
+  <div *ngIf="showFailedMessage" class="failed-message">
+    <p>No pet found :(</p>
+  </div>
+
+
+  <div *ngIf="showResponse" class="response-container">
+<!--    <div *ngFor="let imageUrl of imagesUrl" style="display: flex;">
+&lt;!&ndash;      <img [src]="'https://petpulse.s3.amazonaws.com/' + imageUrl" alt="Image">&ndash;&gt;
+      {{imageUrl}}
+    </div>-->
+    <div class="grid grid-cols-3 gap-4">
+      <div *ngFor="let report of reports" class="bg-white rounded-lg shadow-md p-6 cursor-pointer" (click)="navigateToReport(report.id)">
+        <ng-container *ngIf="report !== null">
+          <div class="relative">
+            <img [src]="'https://petpulse.s3.amazonaws.com/' + report.image" alt="Image" class="object-cover w-full h-64 rounded-t-lg">
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white">
+              <p class="text-lg font-bold">{{ report.title }}</p>
+              <p class="text-base">{{ report.description }}</p>
+              <p class="text-base">{{ report.type }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+</div>
+<router-outlet></router-outlet>
+

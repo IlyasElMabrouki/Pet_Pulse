@@ -1,0 +1,49 @@
+<div class="container mx-auto p-4">
+  <div *ngIf="showSuccessMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <h1 class="text-2xl font-bold mb-4">Reports List  </h1>
+
+  <button class="new-report-button" (click)="navigateToAddReport()">New Report</button>
+
+  <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+    <thead class="bg-gray-800 text-white">
+    <tr>
+      <th class="py-2 px-4">Title</th>
+      <th class="py-2 px-4">Type</th>
+      <th class="py-2 px-4">Status</th>
+      <th class="py-2 px-4">Created At</th>
+      <th class="py-2 px-4">Verified</th>
+      <th class="py-2 px-4">Actions</th> <!-- New header cell for actions -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let report of reports" class="hover:bg-gray-100">
+      <td class="py-3 px-4">{{ report.title }}</td>
+      <td class="py-3 px-4" [ngClass]="{
+  'text-purple-600': report.type === 'ADOPTION',
+  'text-blue-600': report.type === 'LOST'
+}">
+        {{ report.type }}
+      </td>
+
+      <td class="py-3 px-4">{{ report.status }}</td>
+      <td class="py-3 px-4">{{ report.createdAt | date }}</td>
+      <td class="py-3 px-4">{{ report.verified ? 'Yes' : 'No' }}</td>
+      <td class="py-3 px-4">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                (click)="manageReport(report.id)">
+          Manage Report
+        </button>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
+                (click)="viewApplications(report.id)">
+          View Applications
+        </button>
+        <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" (click)="deleteReport(report.id)">
+          <i class="fas fa-trash-alt"></i> Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

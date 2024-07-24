@@ -1,0 +1,128 @@
+<div class="mx-auto max-w-md space-y-6 py-12">
+  <div class="space-y-2 text-center">
+    <h1 class="text-3xl font-bold">{{ 'PET_FORM.TITLE' | translate }}</h1>
+    <p class="text-gray-500 dark:text-gray-400">{{ 'PET_FORM.SUBTITLE' | translate }}</p>
+  </div>
+  <form [formGroup]="petFormGroup" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="name"
+        >
+          {{ 'PET_FORM.NAME' | translate }}
+        </label>
+        <input
+          formControlName="name"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="name"
+          placeholder="Buddy"
+          required
+        />
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="breed"
+        >
+          {{ 'PET_FORM.BREED' | translate }}
+        </label>
+        <input
+          formControlName="breed"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="breed"
+          placeholder="Golden Retriever"
+          required
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="age"
+        >
+          {{ 'PET_FORM.AGE' | translate }}
+        </label>
+        <input
+          formControlName="age"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="age"
+          min="0"
+          placeholder="3"
+          required
+          type="number"
+        />
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="species"
+        >
+          {{ 'PET_FORM.SPECIES' | translate }}
+        </label>
+        <select
+          formControlName="specie"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="species"
+          required
+        >
+          <option value="" disabled>{{ 'PET_FORM.SELECT_SPECIES' | translate }}</option>
+          <option value="DOG">{{ 'PET_FORM.DOG' | translate }}</option>
+          <option value="CAT">{{ 'PET_FORM.CAT' | translate }}</option>
+          <option value="BIRD">{{ 'PET_FORM.BIRD' | translate }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <label
+        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        for="image"
+      >
+        {{ 'PET_FORM.PET_IMAGE' | translate }}
+      </label>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center w-full">
+          <label
+            for="image"
+            class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          >
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-10 h-10 text-gray-400"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" x2="12" y1="3" y2="15"></line>
+              </svg>
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                <span class="font-semibold">{{ 'PET_FORM.CLICK_TO_UPLOAD' | translate }}</span> {{ 'PET_FORM.OR_DRAG_AND_DROP' | translate }}
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{{ 'PET_FORM.IMAGE_FORMAT_AND_SIZE' | translate }}</p>
+            </div>
+            <input id="image" class="hidden" formControlName="image" type="file" multiple (change)="onFileChange($event)" />
+          </label>
+        </div>
+        <div *ngIf="selectedFiles && selectedFiles.length > 0" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+          <p *ngFor="let file of selectedFiles">{{ file.name }}</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+      type="submit"
+      [disabled]="!petFormGroup.valid || !selectedFiles"
+    >
+      {{ 'PET_FORM.SAVE_PET' | translate }}
+    </button>
+  </form>
+</div>

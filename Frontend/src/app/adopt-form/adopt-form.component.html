@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center align-items-center shadow-md">
+  <div class="w-full max-w-2xl">
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow mb-2 mt-2">
+      <div class="px-6 py-5 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Pet Adoption</h2>
+        <p class="text-gray-500 dark:text-gray-400">Fill out the form to list your pet for adoption.</p>
+      </div>
+      <form [formGroup]="adoptForm" (ngSubmit)="onSubmit()" class="px-6 py-5 space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="title">Title</label>
+            <input
+              formControlName="title"
+              class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+              id="title"
+              placeholder="Adopt my friendly pup"
+              type="text"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="description">Description</label>
+            <textarea
+              formControlName="description"
+              class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+              id="description"
+              placeholder="My dog is great with kids and other pets"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="city">City</label>
+            <input
+              formControlName="city"
+              class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+              id="city"
+              placeholder="New York City"
+              type="text"
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="address">Address</label>
+            <input
+              formControlName="address"
+              class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+              id="address"
+              placeholder="123 Main St"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="type">Type</label>
+            <div class="relative">
+              <select
+                formControlName="type"
+                class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+                id="type"
+              >
+                <option value="adoption">Adoption</option>
+                <option value="lost">Lost</option>
+              </select>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="pet-id">Pet</label>
+            <div class="relative">
+              <select
+                formControlName="petId"
+                class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+                id="pet-id"
+              >
+                <option *ngFor="let pet of pets" [value]="pet.id">{{ pet.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="notes">
+            Additional Notes
+          </label>
+          <textarea
+            class="block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 dark:text-white dark:border-gray-600 dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+            id="notes"
+            placeholder="Anything else you'd like to share?"
+            rows="3"
+            formControlName="notes"
+          ></textarea>  
+        </div>
+        <div class="flex justify-end">
+          <button
+            class="inline-flex items-center px-4 py-2 border border-[#198754] text-[#198754] font-medium rounded-md shadow-sm hover:bg-[#198754] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#198754]"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.file-input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  margin-top: 10px;
+}
+
+mat-progress-bar {
+  width: 100%;
+  margin-top: 20px;
+}
+.success-message {
+  background-color: #d4edda; /* Light green background color */
+  color: #155724; /* Dark green text color */
+  padding: 10px; /* Padding around the message */
+  border: 1px solid #c3e6cb; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 10px; /* Top margin */
+}
+.failed-message {
+  background-color: #f8d7da; /* Light red background color */
+  color: #721c24; /* Dark red text color */
+  padding: 10px; /* Padding around the message */
+  border: 1px solid #f5c6cb; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 10px; /* Top margin */
+}

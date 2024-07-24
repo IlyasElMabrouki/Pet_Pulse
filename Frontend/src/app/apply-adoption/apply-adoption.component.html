@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center align-items-center">
+    <div class="w-full max-w-2xl">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
+    <div class="px-8 py-12 md:px-12 md:py-16">
+        <div class="space-y-4 text-center">
+            <h1 class="text-4xl font-bold text-[#157347] md:text-5xl" style="font-weight: 500;">Adoption Application</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-lg">
+                Please fill out the form below to apply for pet adoption.
+            </p>
+        </div>
+        <form class="space-y-8 mt-8"
+        *ngIf="applyFrom" [formGroup]="applyFrom" (ngSubmit)="onSubmit()"
+        >
+            <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> -->
+                <div class="space-y-4">
+                    <label class="block text-lg font-medium" htmlFor="reason">
+                        Reason for Adoption
+                    </label>
+                    <textarea
+                    formControlName="reason"
+                        class="block w-full min-h-[120px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                        id="reason"
+                        placeholder="Explain why you want to adopt a pet"
+                        required
+                        ></textarea>
+                </div>
+                <div class="space-y-4">
+                    <label class="block text-lg font-medium" htmlFor="experience">
+                        Pet Experience
+                    </label>
+                    <textarea
+                        formControlName="petExperience"
+                        class="block w-full min-h-[120px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                        id="experience"
+                        placeholder="Describe your experience with pets"
+                        required></textarea>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-lg font-medium" htmlFor="num-pets">
+                            Number of Pets
+                        </label>
+                        <div class="relative mt-2">
+                            <select
+                                formControlName="numberOfPets"
+                                class="block w-full px-4 py-3 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent appearance-none dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                                id="num-pets" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="2" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <button class="w-full mt-3 text-white font-bold py-2 hover:bg-[#0f5a37] bg-[#157347] px-4 mt-2 rounded"
+            type="submit"
+            >
+                Submit Application
+              </button>
+        </form>
+    </div>
+</div>
+</div>
+</div>

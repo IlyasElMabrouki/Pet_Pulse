@@ -1,0 +1,83 @@
+<div class="fixed bottom-10 right-10 z-50">
+  <button
+    class="text-white font-bold py-3 px-3 rounded-full"
+    style="background-color: #28865b;"
+    (click)="openModal()"
+  >
+    <img src="assets/chatbot.png" alt="{{ 'CHATBOT.OPEN_MODAL' | translate }}" class="h-8 w-8" />
+  </button>
+</div>
+
+<div
+  class="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50 z-50"
+  *ngIf="showModal"
+>
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full sm:w-1/2">
+    <div class="flex h-full w-full flex-col">
+      <header
+        class="flex h-14 items-center justify-between border-b bg-gray-100 px-4 dark:border-gray-800 dark:bg-gray-950"
+      >
+        <div class="flex items-center gap-3">
+          <div class="text-sm font-medium">{{ 'CHATBOT.TITLE' | translate }}</div>
+        </div>
+        <button (click)="closeModal()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="20"
+            height="20"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"
+            ></path>
+          </svg>
+        </button>
+      </header>
+      <div class="flex-1 overflow-auto p-4">
+        <div class="grid gap-4">
+          <div
+            *ngFor="let message of chatHistory"
+            class="flex justify-{{
+              message.sender === 'user' ? 'end' : 'start'
+            }}"
+          >
+            <div
+              class="max-w-[75%] rounded-lg border bg-{{
+                message.sender === 'user' ? 'gray' : 'white'
+              }} p-3 text-sm shadow-sm dark:border-gray-800 dark:bg-gray-{{
+                message.sender === 'user' ? '800' : '950'
+              }} dark:text-gray-{{ message.sender === 'user' ? '50' : '50' }}"
+            >
+              <p>{{ message.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center gap-2 border-t bg-gray-100 p-4 dark:border-gray-800 dark:bg-gray-950"
+      >
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1"
+          placeholder="{{ 'CHATBOT.TYPE_MESSAGE' | translate }}"
+          type="text"
+          [(ngModel)]="userInput"
+        />
+        <!-- Show loading spinner when loading is true -->
+        <button
+          *ngIf="!loading; else loadingSpinner"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2"
+          (click)="onSubmit()"
+          style="background-color: #28865b;"
+        >
+          {{ 'CHATBOT.SEND' | translate }}
+        </button>
+        <!-- Loading spinner -->
+        <ng-template #loadingSpinner>
+          <div class="spinner-border text-primary" role="status"></div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

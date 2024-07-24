@@ -1,0 +1,21 @@
+.sta{
+  display: flex;
+  align-items: flex-end;
+}
+.sta1,.sta2{
+  margin: 0 20px;
+  padding: 5px 10px;
+  background-color: #cfd6e7;
+}
+.specs{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.spec{
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px silver solid;
+}
+

@@ -1,0 +1,10 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-4" style="width: 80%;margin: 0 auto;">
+  <div *ngFor="let application of applicationList" class="bg-white rounded-lg shadow-md p-4 flex items-center w-90">
+    <img [src]="'https://petpulse.s3.amazonaws.com/' + application.proofImage" alt="Proof Image" style="width: 200px" class="w-30 h-30  rounded-md mr-4">
+    <div class="flex-1">
+      <h3 class="text-lg font-bold">{{ application.message }}</h3>
+      <p class="text-gray-600 mb-2">Sighting Location: {{ application.sightingLocation || 'Not provided' }}</p>
+      <p class="text-gray-600 mb-2">Contact Info: {{ application.contactInfo || 'Not provided' }}</p>
+    </div>
+  </div>
+</div>

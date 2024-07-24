@@ -1,0 +1,68 @@
+<header class="flex items-center justify-between px-4 md:px-6 py-4 border-b">
+  <div class="flex items-center gap-4">
+    <h1 class="text-2xl font-bold">{{ 'PET_LIST.TITLE' | translate }}</h1>
+  </div>
+  <div class="flex items-center gap-4">
+    <app-language-switcher ></app-language-switcher>
+    <form [formGroup]="searchFormGroup" class="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-md px-3 py-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </svg>
+      <input
+        class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent focus:outline-none"
+        placeholder="{{ 'PET_LIST.SEARCH_PETS' | translate }}"
+        type="search"
+        formControlName="search"
+      />
+    </form>
+    <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" routerLink="/new-pet">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-4 h-4 mr-2"
+      >
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      {{ 'PET_LIST.ADD_PET' | translate }}
+    </button>
+  </div>
+</header>
+
+<ng-container *ngIf="pets.length === 0; else petList">
+  <div class="flex flex-col items-center justify-center h-screen">
+    <h2 class="text-2xl font-bold mb-2">{{ 'PET_LIST.NO_PETS_FOUND' | translate }}</h2>
+    <p class="text-gray-500 dark:text-gray-400">{{ 'PET_LIST.NO_PETS_MESSAGE' | translate }}</p>
+  </div>
+</ng-container>
+<ng-template #petList>
+  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
+    <app-pet-card *ngFor="let pet of pets" [pet]="pet"></app-pet-card>
+  </section>
+  <div class="flex justify-center mt-4">
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination>
+  </div>
+</ng-template>

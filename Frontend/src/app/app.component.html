@@ -1,0 +1,5 @@
+
+<app-navbar *ngIf="!isLoginPage() && !isRegisterPage()"></app-navbar>
+<router-outlet></router-outlet>
+<!--Chatbot Modal-->
+<app-chatbot-modal *ngIf="!isLoginPage() && !isRegisterPage()"></app-chatbot-modal>

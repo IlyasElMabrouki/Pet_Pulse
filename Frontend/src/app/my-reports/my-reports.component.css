@@ -1,0 +1,16 @@
+/* your-component.component.css */
+.new-report-button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.new-report-button:hover {
+  background-color: #0056b3; /* Darker shade of the primary color */
+}
+

@@ -1,0 +1,9 @@
+<div class="flex items-center space-x-2">
+  <button (click)="prevPage()" [disabled]="currentPage === 1" class="px-2 py-1 border rounded">
+    Previous
+  </button>
+  <span>Page {{currentPage}} of {{totalPages}}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="px-2 py-1 border rounded">
+    Next
+  </button>
+</div>

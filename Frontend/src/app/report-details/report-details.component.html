@@ -1,0 +1,65 @@
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+<div *ngIf="reportData && petData" class="flex justify-center" style=" padding:20px">
+
+
+  <!-- Left column for pet image -->
+  <div *ngIf="reportData && petData" class="flex justify-center">
+    <!-- Left column for pet image -->
+    <div class="w-300 p-4">
+      <!-- Main image -->
+      <img class="w-300 h-auto" [src]="getImageUrl(petData.images[0])" alt="Pet Image" style="border-radius: 10px;">
+      <p class="text-x"><strong>Reported By:</strong> {{reportData.reporterName}}</p>
+
+      <!-- Loop over additional images and show them smaller -->
+      <div class="flex mt-4">
+        <img *ngFor="let image of petData.images.slice(1); let i = index" class="w-20 h-auto mr-2 border border-gray-300" [src]="getImageUrl(image)" alt="Pet Image" (click)="setMainImage(image)">
+      </div>
+      <!-- Button below the main image -->
+      <!-- app.component.html -->
+      <p class="mt-4">Find This Pet? <button class="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded" [routerLink]="'/apply-finding/' + this.reportData?.id">Submit Application</button></p>
+    </div>
+  </div>
+  <div class="w-1/2 p-4" >
+    <h1  class="text-3xl font-bold text-black-700">Lost Pet Report</h1>
+    <div class="sta">
+      <div class="sta1">
+        Report Status
+        <p>{{ reportData.status }}</p>
+      </div>
+      <div class="sta2">
+        Lost Date
+        <p>{{ reportData.createdAt }}</p>
+      </div>
+    </div>
+    <p class="font-bold">About This Pet :</p>
+    <div class="specs">
+      <div class="spec">
+        <p>Name</p>
+        <p class="mb-2 font-bold"> {{ petData.name }}</p>
+      </div>
+      <div class="spec">
+        <p >Age</p>
+        <p class="mb-2 font-bold"> {{ petData.age }} years</p>
+      </div>
+      <div class="spec">
+        <p >Species</p>
+        <p class="mb-2 font-bold">{{ petData.specie }}</p>
+
+      </div>
+      <div class="spec">
+        <p >Breed</p>
+        <p class="mb-2 font-bold">{{ petData.breed }}</p>
+      </div>
+      <div class="spec">
+        <p >Lost near</p>
+        <p class="mb-2 font-bold">{{ reportData.address }}, {{reportData.city}}</p>
+      </div>
+    </div>
+    <div class="" >
+      <h1  class="text-3xl mt-2 mb-2 font-bold text-black">Notes from Owner</h1>
+      <p class="mb-2">{{ reportData.additionalNotes }}</p>
+    </div>
+  </div>
+</div>

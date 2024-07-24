@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="w-full max-w-2xl">
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-950">
+      <div class="px-8 py-12 md:px-12 md:py-16">
+        <div class="space-y-4 text-center">
+          <h1 class="text-4xl font-bold text-[#157347] md:text-5xl" style="font-weight: 500;">Finding Application</h1>
+          <p class="text-gray-500 dark:text-gray-400 text-lg">
+            Please fill out the form below to apply for pet finding.
+          </p>
+        </div>
+        <form class="space-y-8 mt-8"
+              *ngIf="applyFrom" [formGroup]="applyFrom" (ngSubmit)="onSubmit()"
+        >
+          <div class="space-y-4">
+            <label class="block text-lg font-medium" htmlFor="message">
+              Message
+            </label>
+            <textarea
+              formControlName="message"
+              class="block w-full min-h-[120px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+              id="message"
+              placeholder="Message"
+              required
+            ></textarea>
+          </div>
+          <div class="space-y-4">
+            <label class="block text-lg font-medium" htmlFor="contact_info">
+              Contact Info
+            </label>
+            <textarea
+              formControlName="contact_info"
+              class="block w-full min-h-[120px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+              id="contact_info"
+              placeholder="Provide a contact info"
+              required></textarea>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-lg font-medium" htmlFor="sighting_location">
+                sighting location
+              </label>
+              <input
+                type="text"
+                formControlName="sighting_location"
+                class="block w-full min-h-[40px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                id="sighting_location"
+                placeholder="Provide a location"
+                required/>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <label class="block text-lg font-medium" htmlFor="proof_image">
+              Proof Image
+            </label>
+            <label for="proof_image" class="custom-file-upload">
+              Choose File
+              <input
+                type="file"
+                accept="image/*"
+                (change)="onFileSelected($event)"
+                class="block w-full min-h-[40px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#157347] focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                id="proof_image"
+                required
+              />
+            </label>
+          </div>
+          <div *ngIf="loading" class="loading-indicator">
+            <!-- Add your loading message or spinner here -->
+            Loading...
+          </div>
+
+          <button class="w-full mt-3 text-white font-bold py-2 hover:bg-[#0f5a37] bg-[#157347] px-4 mt-2 rounded"
+                  type="submit"
+          >
+            Submit Application
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

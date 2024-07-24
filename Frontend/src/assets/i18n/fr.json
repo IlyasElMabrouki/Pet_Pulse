@@ -1,0 +1,32 @@
+{
+  "PET_LIST": {
+    "TITLE": "Animaux de compagnie",
+    "SEARCH_PETS": "Rechercher des animaux...",
+    "ADD_PET": "Ajouter un animal",
+    "NO_PETS_FOUND": "Aucun animal trouvé",
+    "NO_PETS_MESSAGE": "Il semble qu'il n'y ait pas d'animaux à afficher pour le moment."
+  },
+  "PET_FORM": {
+    "TITLE": "Ajouter un nouvel animal",
+    "SUBTITLE": "Remplissez le formulaire pour créer un nouveau profil d'animal.",
+    "NAME": "Nom",
+    "BREED": "Race",
+    "AGE": "Âge",
+    "SPECIES": "Espèces",
+    "SELECT_SPECIES": "Sélectionnez des espèces",
+    "DOG": "Chien",
+    "CAT": "Chat",
+    "BIRD": "Oiseau",
+    "PET_IMAGE": "Image de l'animal",
+    "CLICK_TO_UPLOAD": "Cliquez pour télécharger",
+    "OR_DRAG_AND_DROP": "ou glisser-déposer",
+    "IMAGE_FORMAT_AND_SIZE": "SVG, PNG, JPG ou GIF (MAX. 800x400px)",
+    "SAVE_PET": "Sauvegarder l'animal"
+  },
+  "CHATBOT": {
+    "OPEN_MODAL": "Ouvrir la modal",
+    "TITLE": "Chatbot",
+    "TYPE_MESSAGE": "Tapez votre message...",
+    "SEND": "Envoyer"
+  }
+}

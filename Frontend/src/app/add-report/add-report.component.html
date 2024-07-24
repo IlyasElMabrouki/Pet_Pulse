@@ -1,0 +1,66 @@
+
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Edit Report</h1>
+  <div *ngIf="showSuccessMessage"  class="success-message" >
+    Report added successfully!
+  </div>
+  <form #reportForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="mb-4">
+      <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+      <input type="text" id="title" name="title"  class="form-input"  ngModel required >
+    </div>
+
+    <div class="mb-4">
+      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+      <textarea id="description" name="description"   class="form-textarea" ngModel required></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+      <input type="text" id="city" name="city"  class="form-input" ngModel required>
+    </div>
+    <div class="mb-4">
+      <label for="city" class="block text-sm font-medium text-gray-700">Concerned Pet</label>
+    <select class="form-select" name="pet_id" ngModel>
+      <option  *ngFor="let pet of pets" class="pet-card mb-4 p-4 border rounded" value="{{ pet.id }}" class="pet-image">{{ pet.name }}</option>
+    </select>
+    </div>
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+      <input type="text" id="address" name="address"  class="form-input" ngModel required>
+    </div>
+    <div class="mb-4">
+      <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+      <select id="type" name="type" class="form-select"  ngModel required>
+        <option value="ADOPTION" >ADOPTION</option>
+        <option value="LOST" >LOST</option>
+      </select>
+    </div>
+
+
+
+
+
+    <div class="mb-4 form-textarea">
+      <label for="additionalNotes" class="block text-sm font-medium text-gray-700">Additional Notes</label>
+      <textarea id="additionalNotes" name="additionalNotes"  class="form-textarea" ngModel ></textarea>
+    </div>
+
+    <div class="mt-4 flex justify-center">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+        Save Changes
+      </button>
+      <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        Cancel
+      </button>
+    </div>
+  </form>
+
+</div>
+
+
+
+
+

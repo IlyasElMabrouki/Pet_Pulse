@@ -1,0 +1,99 @@
+<div id="Main" [ngStyle]="{ 'background-color': '#FFF', height: '100%' }">
+  <div class="dashboard">
+    <div class="filterOptions sticky-top z-0" style="flex: 1;">
+      <div
+        class="d-flex flex-sm-column flex-row flex-nowrap align-items-center w-100 sticky-top"
+      >
+        <ul
+          class="nav px-3 options w-100 nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto me-auto text-center align-items-center sticky-top"
+        >
+          <br />
+          <li class="text-success h4"><b>Age</b></li>
+          <li>
+            <span>{{ petAgeStart }}</span>
+            <mat-slider min="1" max="40">
+              <input value="1" (input)="petAgeStartAgeChange($event)" matSliderStartThumb>
+              <input value="15" (input)="petAgeEndAgeChange($event)" matSliderEndThumb>
+            </mat-slider>
+            <span>{{ petAgeEnd }}</span>
+          </li>
+          <hr class="color-red w-100" />
+          <br />
+          <li class="text-success h4"><b>Specie</b></li>
+          <li>
+            <label>
+              <select 
+              required 
+              [(ngModel)]="specie"
+               (change)="selectSpecie()"
+               >
+                <option value="DOG">Dog</option>
+                <option value="CAT">Cat</option>
+              </select>
+            </label>
+          </li>
+
+          <br />
+          <li class="text-success h4"><b>Breed</b></li>
+          <li>
+            <label class="mb-3">
+              <input
+                type="text"
+                placeholder="Persian"
+                [(ngModel)]="breed"
+                (ngModelChange)="onBreedChange()"
+              />
+            </label>
+          </li>
+          <hr class="color-red w-100" />
+          <br />
+          <li class="text-success h4"><b>City</b></li>
+          <li>
+            <label class="mb-3">
+              <input
+                type="text"
+                placeholder="Tangier"
+                [(ngModel)]="city"
+                (ngModelChange)="onCityChange()"
+              />
+            </label>
+          </li>
+          <hr class="color-red w-100" />
+          <div class="d-flex justify-content-center my-4">
+            <button class="adoption-btn btn" (click)="router.navigateByUrl('adopt-form')">
+              Have a pet for adoption?
+            </button>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards d-flex flex-column" style="flex: 4;">
+      <div>
+        <h5>Page no:{{ page }}</h5>
+      </div>
+      <div class="d-flex flex-wrap justify-content-evenly"></div>
+      <br />
+      <div class="d-flex flex-wrap justify-content-evenly">
+        <app-card *ngFor="let ad of adoptionPosts" [Report]="ad"></app-card>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <button
+          (click)="moveBackword()"
+          class="btn btn-success btn-lg banner-btn mx-2 rounded-circle"
+        >
+          <fa-icon [icon]="icons.faBackwardStep"></fa-icon>
+        </button>
+        <button
+          (click)="moveForword()"
+          class="btn btn-success btn-lg banner-btn mx-2 rounded-circle"
+        >
+          <fa-icon [icon]="icons.faForwardStep"></fa-icon>
+        </button>
+      </div>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+</div>
